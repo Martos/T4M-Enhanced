@@ -20,7 +20,7 @@ void PatchT4_Branding()
 	// TODO: Replace shortversion DVars and other version related locations
 	//nop(0x59D68B, 5);										// commented out to re-enable intro video because it's cool
 	nop(0x5FD91B, 5);										// disable pc_newversionavailable check
-	PatchMemory(0x851208, (PBYTE)va("T4Me r%d> ", VERSION_T4ME), 14);	// change the console input version
+	PatchMemory(0x851208, (PBYTE)va("T4CE r%d> ", VERSION_T4ME), 14);	// change the console input version
 	PatchMemory(0x871EE8, (PBYTE)va("T4-SP (r%i)\n", VERSION), 32);
 	Detours::X86::DetourFunction((PBYTE)0x5B5A20, (PBYTE)&SetShortVersion, Detours::X86Option::USE_CALL); // change version number bottom right of main
 	Detours::X86::DetourFunction((PBYTE)0x4743D2, (PBYTE)&SetConsoleVersion, Detours::X86Option::USE_CALL); // change the version info of console window
@@ -29,7 +29,7 @@ void PatchT4_Branding()
 
 const char* SetConsoleVersion()
 {
-	return va("Call of Duty %s", va("T4-SP (r%d) (built " DATE_T4 " " TIME " by Clippy95 and Nazi Zombies remastered developer JB)", VERSION_T4ME));
+	return va("Call of Duty %s", va("T4-SP (r%d) (built " DATE_T4 " " TIME " by Clippy95 and Nazi Zombies remastered developer JB, Martos for CE)", VERSION_T4ME));
 }
 
 const char* SetShortVersion()

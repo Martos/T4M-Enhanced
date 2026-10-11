@@ -63,7 +63,10 @@ dvar_t* g_fix_tesla_bug;
 
 dvar_t* g_fix_health_sets_max;
 
-
+// CE
+dvar_t* ce_t4m;
+dvar_t* ce_welcome_dialog;
+dvar_t* xenon_hud;
 
 // custom functions
 typedef struct
@@ -352,6 +355,10 @@ void PatchT4_Script()
 	g_disable_zombie_grab = Dvar_RegisterInt(0, "g_disable_zombie_grab", 0, 2, DVAR_FLAG_CHEAT, "Disables pushPlayer() from executing\n1 = Disable when playing zombies\n2 = always disabled");
 
 	g_fix_tesla_bug = Dvar_RegisterBool(0, "g_fix_tesla_bug",DVAR_FLAG_CHEAT, "Applies same wunderwaffe's 'fix' as seen in Black Ops 1");
+
+	ce_t4m = Dvar_RegisterBool(1, "ce_t4m", 0, "Check if T4M is in CE version.");
+	xenon_hud = Dvar_RegisterBool(2, "ui_ce_xenon_hud", 0, "(EXPERIMENTAL) Enable Xbox 360 HUD.");
+	ce_welcome_dialog = Dvar_RegisterBool(1, "ce_welcome", 0, "Show C.E. welcome dialog.");
 
 	Memory::VP::InjectHook(0x4DDA72, DisablePushPlayer);
 

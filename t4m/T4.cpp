@@ -400,7 +400,8 @@ int __cdecl DB_GetXAssetTypeSize(int type)
 }
 
 bool isZombieMode() {
-	return (*(dvar_t**)0x030520E4)->isEnabled();
+	// return (*(dvar_t**)0x030520E4)->isEnabled();
+	return true;
 }
 
 bool Com_SessionMode_IsZombiesGame() {
